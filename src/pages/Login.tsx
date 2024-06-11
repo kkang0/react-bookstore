@@ -1,43 +1,27 @@
 import Title from "../components/common/Title";
 import InputText from "../components/common/InputText";
 import Button from "../components/common/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { login } from "../api/auth.api";
-import { useAlert } from "../hooks/useAlert";
 import { JoinStyle } from "./Join";
-import { useAuthStore } from "../store/authStore";
+import { useAuth } from "@/hooks/useAuth";
 
-export interface JoinProps {
+export interface LoginProps {
   email: string;
   password: string;
 }
 
 function Login() {
-  const navigate = useNavigate();
-  const { showAlert } = useAlert();
-
-  const { storeLogin } = useAuthStore();
+  const { userLogin } = useAuth();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<JoinProps>();
+  } = useForm<LoginProps>();
 
-  const onSubmit = (data: JoinProps) => {
-    login(data).then(
-      (res) => {
-        // 상태 변화
-        storeLogin(res.token);
-
-        showAlert("로그인이 완료되었습니다.");
-        navigate("/");
-      },
-      (error) => {
-        showAlert("로그인에 실패하였습니다.");
-      }
-    );
+  const onSubmit = (data: LoginProps) => {
+    userLogin(data);
   };
 
   return (

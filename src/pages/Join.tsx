@@ -2,11 +2,9 @@ import styled from "styled-components";
 import Title from "../components/common/Title";
 import InputText from "../components/common/InputText";
 import Button from "../components/common/Button";
-import { Link, useNavigate } from "react-router-dom";
-// import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { join } from "../api/auth.api";
-import { useAlert } from "../hooks/useAlert";
+import { useAuth } from "@/hooks/useAuth";
 
 export interface JoinProps {
   email: string;
@@ -14,8 +12,7 @@ export interface JoinProps {
 }
 
 function Join() {
-  const navigate = useNavigate();
-  const { showAlert } = useAlert();
+  const { userJoin } = useAuth();
 
   const {
     register,
@@ -24,11 +21,7 @@ function Join() {
   } = useForm<JoinProps>();
 
   const onSubmit = (data: JoinProps) => {
-    join(data).then((res) => {
-      // 성공
-      showAlert("회원가입이 완료되었습니다.");
-      navigate("/login");
-    });
+    userJoin(data);
   };
 
   return (
