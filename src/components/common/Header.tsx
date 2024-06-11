@@ -39,7 +39,7 @@ function Header() {
               <Link to="/carts">장바구니</Link>
             </li>
             <li>
-              <Link to="/orders">주문 내역</Link>
+              <Link to="/orderlist">주문 내역</Link>
             </li>
             <li>
               <button onClick={storeLogout}>로그아웃</button>
