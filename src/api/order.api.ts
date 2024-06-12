@@ -1,5 +1,5 @@
-import { Order, OrderDetailItem, OrderSheet } from "../models/order.model";
-import { httpClient, requestHandler } from "./http";
+import { OrderSheet } from "../models/order.model";
+import { requestHandler } from "./http";
 
 // export const order = async (orderData: OrderSheet) => {
 //   const response = await httpClient.post("/orders", orderData);

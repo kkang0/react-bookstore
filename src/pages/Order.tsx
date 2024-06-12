@@ -9,7 +9,6 @@ import { Delivery, OrderSheet } from "../models/order.model";
 import FindAddressButton from "../components/order/FindAddressButton";
 import { order } from "../api/order.api";
 import { useAlert } from "../hooks/useAlert";
-import axios from "axios";
 
 interface DeliveryForm extends Delivery {
   addressDetail: string;
