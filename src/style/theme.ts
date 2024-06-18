@@ -11,6 +11,7 @@ export type HeadingSize = "large" | "medium" | "small";
 export type ButtonSize = "large" | "medium" | "small";
 export type ButtonScheme = "primary" | "normal" | "like";
 export type LayoutWidth = "large" | "medium" | "small";
+export type MediaQuery = "mobile" | "tablet" | "desktop";
 
 interface Theme {
   name: ThemeName;
@@ -39,6 +40,9 @@ interface Theme {
     width: {
       [key in LayoutWidth]: string;
     };
+  };
+  mediaQuery: {
+    [key in MediaQuery]: string;
   };
 }
 
@@ -100,6 +104,11 @@ export const light: Theme = {
       medium: "760px",
       small: "320px",
     },
+  },
+  mediaQuery: {
+    mobile: "(max-width: 768px)", // 768px 이하에서 동작
+    tablet: "(max-width: 1024px)", // 1024px 이하에서 동작
+    desktop: "(min-width: 1025px)", // 1025px 이상에서 동작
   },
 };
 
